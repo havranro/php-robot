@@ -95,6 +95,38 @@ class RobotPosition
     }
 
     /**
+     * @param int $size
+     */
+    public function moveNorth(int $size): void
+    {
+        $this->setY($this->getY() + $size);
+    }
+
+    /**
+     * @param int $size
+     */
+    public function moveEast(int $size): void
+    {
+        $this->setX($this->getX() + $size);
+    }
+
+    /**
+     * @param int $size
+     */
+    public function moveSouth(int $size): void
+    {
+        $this->setY($this->getY() - $size);
+    }
+
+    /**
+     * @param int $size
+     */
+    public function moveWest(int $size): void
+    {
+        $this->setX($this->getX() - $size);
+    }
+
+    /**
      * @return null|string
      */
     public function getFacingAsString(): ?string
@@ -141,37 +173,5 @@ class RobotPosition
         }
 
         return $this->getX() . ' ' . $this->getY();
-    }
-
-    /**
-     * @param int $size
-     */
-    public function moveNorth(int $size): void
-    {
-        $this->setY($this->getY() + $size);
-    }
-
-    /**
-     * @param int $size
-     */
-    public function moveEast(int $size): void
-    {
-        $this->setX($this->getX() + $size);
-    }
-
-    /**
-     * @param int $size
-     */
-    public function moveSouth(int $size): void
-    {
-        $this->setY($this->getY() - $size);
-    }
-
-    /**
-     * @param int $size
-     */
-    public function moveWest(int $size): void
-    {
-        $this->setX($this->getX() - $size);
     }
 }

@@ -6,5 +6,4 @@ namespace Robot\Model\Table;
 
 interface TableInterface
 {
-
 }

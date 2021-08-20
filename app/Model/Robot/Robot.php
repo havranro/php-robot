@@ -135,5 +135,4 @@ class Robot implements RobotInterface
     {
         return PositionRepository::getLastPosition();
     }
-
 }

@@ -78,7 +78,6 @@ class RobotPlaceCommand extends Command
             try {
                 $actualPosition = $this->robot->place($newPosition)->getActualPosition();
                 $output->writeln('OUTPUT:' . $actualPosition->toString(true));
-
             } catch (\Exception $e) {
                 $output->writeln($e->getMessage());
             }

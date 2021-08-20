@@ -62,12 +62,10 @@ class RobotMoveCommand extends Command
             $actualPosition = $this->robot->move((int )$moveSize)->getActualPosition();
 
             $output->writeln('OUTPUT:' . $actualPosition->toString(true));
-
         } catch (Exception $e) {
             $output->writeln($e->getMessage());
         }
 
         return Command::SUCCESS;
-
     }
 }

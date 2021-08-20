@@ -16,8 +16,7 @@ class Table implements TableInterface
      */
     public function __construct(
         int $size
-    )
-    {
+    ) {
         $this->size = $size;
     }
 

@@ -72,12 +72,10 @@ class RobotFacingCommand extends Command
             $actualPosition = $this->robot->changeFacing($newFacing)->getActualPosition();
 
             $output->writeln('OUTPUT:' . $actualPosition->toString(true));
-
         } catch (Exception $e) {
             $output->writeln($e->getMessage());
         }
 
         return Command::SUCCESS;
-
     }
 }

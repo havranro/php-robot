@@ -4,9 +4,15 @@ declare(strict_types=1);
 
 namespace Robot\Model\Robot;
 
+use Exception;
+use MathPHP\Exception\BadDataException;
 use MathPHP\LinearAlgebra\Vector;
 use Robot\Repository\PositionRepository;
 
+/**
+ * Class RobotPosition
+ * @package Robot\Model\Robot
+ */
 class RobotPosition
 {
     public const SIDE_VECTORS = [
@@ -29,6 +35,13 @@ class RobotPosition
 
     private ?Vector $facing;
 
+    /**
+     * RobotPosition constructor.
+     * @param int|null $x
+     * @param int|null $y
+     * @param string $facing
+     * @throws BadDataException
+     */
     public function __construct(
         int $x = null,
         int $y = null,
@@ -156,7 +169,7 @@ class RobotPosition
             $this->setFacing($lastSavedPosition->getFacing());
 
             return true;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
         }
 
         return false;

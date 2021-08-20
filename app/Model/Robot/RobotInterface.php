@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Robot\Model\Robot;
 
+/**
+ * Interface RobotInterface
+ * @package Robot\Model\Robot
+ */
 interface RobotInterface
 {
     public const MOVE_TYPE_PLACE = 'PLACE';

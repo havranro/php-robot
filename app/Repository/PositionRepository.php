@@ -10,6 +10,10 @@ use Nette\Utils\FileSystem;
 use Robot\Factory\RobotPositionFactory;
 use Robot\Model\Robot\RobotPosition;
 
+/**
+ * Class PositionRepository
+ * @package Robot\Repository
+ */
 class PositionRepository
 {
     private const FILE_PATH_TO_PERSIST = __DIR__ . '/../../temp/robot.txt';

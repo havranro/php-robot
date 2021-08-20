@@ -6,6 +6,10 @@ namespace Robot\Factory;
 
 use Robot\Model\Robot\RobotPosition;
 
+/**
+ * Class RobotPositionFactory
+ * @package Robot\Factory
+ */
 class RobotPositionFactory
 {
     /**

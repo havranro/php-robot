@@ -6,6 +6,10 @@ namespace Robot\Model\Table;
 
 use Robot\Model\Robot\RobotPosition;
 
+/**
+ * Class Table
+ * @package Robot\Model\Table
+ */
 class Table implements TableInterface
 {
     private int $size;

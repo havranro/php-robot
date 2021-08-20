@@ -6,6 +6,10 @@ namespace Robot\Model\Table;
 
 use Robot\Model\Robot\RobotPosition;
 
+/**
+ * Interface TableInterface
+ * @package Robot\Model\Table
+ */
 interface TableInterface
 {
     /**

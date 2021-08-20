@@ -9,6 +9,10 @@ use MathPHP\LinearAlgebra\Vector;
 use Robot\Model\Table\Table;
 use Robot\Repository\PositionRepository;
 
+/**
+ * Class Robot
+ * @package Robot\Model\Robot
+ */
 class Robot implements RobotInterface
 {
     private Table $table;

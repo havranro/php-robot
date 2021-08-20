@@ -73,9 +73,9 @@ class RobotPlaceCommand extends Command
         }
 
         if ($robotMoveType === RobotInterface::MOVE_TYPE_PLACE) {
-            $newPosition = RobotPositionFactory::create((int)$x, (int)$y, $robotSideType);
-
             try {
+                $newPosition = RobotPositionFactory::create((int)$x, (int)$y, $robotSideType);
+
                 $actualPosition = $this->robot->place($newPosition)->getActualPosition();
                 $output->writeln('OUTPUT:' . $actualPosition->toString(true));
             } catch (\Exception $e) {

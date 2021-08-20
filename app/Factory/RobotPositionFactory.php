@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Robot\Factory;
 
+use MathPHP\Exception\BadDataException;
 use Robot\Model\Robot\RobotPosition;
 
 /**
@@ -13,10 +14,11 @@ use Robot\Model\Robot\RobotPosition;
 class RobotPositionFactory
 {
     /**
-     * @param int $x
-     * @param int $y
-     * @param $facing
+     * @param int|null $x
+     * @param int|null $y
+     * @param string $facing
      * @return RobotPosition
+     * @throws BadDataException
      */
     public static function create(int $x = null, int $y = null, $facing = ''): RobotPosition
     {

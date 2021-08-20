@@ -9,7 +9,14 @@ use Robot\Repository\PositionRepository;
 
 class RobotPosition
 {
-    private const SIDE_TYPES_VECTOR_MAPPING = [
+    public const SIDE_VECTORS = [
+        [0, 1],
+        [1, 0],
+        [0, -1],
+        [-1, 0],
+    ];
+
+    public const SIDE_TYPES_VECTOR_MAPPING = [
         RobotInterface::SIDE_TYPE_NORTH => [0, 1],
         RobotInterface::SIDE_TYPE_EAST => [1, 0],
         RobotInterface::SIDE_TYPE_SOUTH => [0, -1],
@@ -25,13 +32,17 @@ class RobotPosition
     public function __construct(
         int $x = null,
         int $y = null,
-        string $facing = ''
+        $facing = ''
     ) {
         $this->x = $x;
         $this->y = $y;
 
-        if ($facing !== '') {
+        if (($facing !== '') && !is_array($facing)) {
             $this->facing = new Vector(self::SIDE_TYPES_VECTOR_MAPPING[$facing]);
+        }
+
+        if (is_array($facing)) {
+            $this->facing = new Vector($facing);
         }
     }
 
@@ -84,15 +95,17 @@ class RobotPosition
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getFacingAsString(): string
+    public function getFacingAsString(): ?string
     {
         foreach (self::SIDE_TYPES_VECTOR_MAPPING as $char => $coords) {
             if ($coords === $this->getFacing()->getVector()) {
                 return $char;
             }
         }
+
+        return null;
     }
 
     /**
@@ -106,9 +119,9 @@ class RobotPosition
 
         try {
             $lastSavedPosition = PositionRepository::getLastPosition();
-            $this->setX($lastSavedPosition[0]);
-            $this->setY($lastSavedPosition[1]);
-            $this->setFacing(new Vector(self::SIDE_TYPES_VECTOR_MAPPING[$lastSavedPosition[2]]));
+            $this->setX($lastSavedPosition->getX());
+            $this->setY($lastSavedPosition->getY());
+            $this->setFacing($lastSavedPosition->getFacing());
 
             return true;
         } catch (\Exception $e) {
@@ -118,10 +131,47 @@ class RobotPosition
     }
 
     /**
+     * @param bool $withFacing
      * @return string
      */
-    public function toString(): string
+    public function toString(bool $withFacing = false): string
     {
-        return $this->getX() . ' ' . $this->getY() . ' ' . $this->getFacingAsString();
+        if ($withFacing) {
+            return $this->getX() . ' ' . $this->getY() . ' ' . $this->getFacingAsString();
+        }
+
+        return $this->getX() . ' ' . $this->getY();
+    }
+
+    /**
+     * @param int $size
+     */
+    public function moveNorth(int $size): void
+    {
+        $this->setY($this->getY() + $size);
+    }
+
+    /**
+     * @param int $size
+     */
+    public function moveEast(int $size): void
+    {
+        $this->setX($this->getX() + $size);
+    }
+
+    /**
+     * @param int $size
+     */
+    public function moveSouth(int $size): void
+    {
+        $this->setY($this->getY() - $size);
+    }
+
+    /**
+     * @param int $size
+     */
+    public function moveWest(int $size): void
+    {
+        $this->setX($this->getX() - $size);
     }
 }

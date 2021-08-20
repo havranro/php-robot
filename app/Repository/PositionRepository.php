@@ -7,6 +7,7 @@ namespace Robot\Repository;
 use Exception;
 use JsonException;
 use Nette\Utils\FileSystem;
+use Robot\Factory\RobotPositionFactory;
 use Robot\Model\Robot\RobotPosition;
 
 class PositionRepository
@@ -14,13 +15,15 @@ class PositionRepository
     private const FILE_PATH_TO_PERSIST = __DIR__ . '/../../temp/robot.txt';
 
     /**
-     * @return array
+     * @return RobotPosition
      * @throws Exception
      */
-    public static function getLastPosition(): array
+    public static function getLastPosition(): RobotPosition
     {
         try {
-            return json_decode(FileSystem::read(self::FILE_PATH_TO_PERSIST), true, 512, JSON_THROW_ON_ERROR);
+            $data = json_decode(FileSystem::read(self::FILE_PATH_TO_PERSIST), true, 512, JSON_THROW_ON_ERROR);
+
+            return RobotPositionFactory::create($data[0], $data[1], $data[2]);
         } catch (JsonException $e) {
             throw new Exception('Filesystem cant read file');
         }
@@ -35,7 +38,7 @@ class PositionRepository
         $position = [
             $robotPosition->getX(),
             $robotPosition->getY(),
-            $robotPosition->getFacingAsString()
+            $robotPosition->getFacing()
         ];
 
         try {

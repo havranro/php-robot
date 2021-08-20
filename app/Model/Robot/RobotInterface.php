@@ -7,12 +7,6 @@ namespace Robot\Model\Robot;
 interface RobotInterface
 {
     public const MOVE_TYPE_PLACE = 'PLACE';
-    public const MOVE_TYPE_MOVE = 'MOVE';
-
-    public const MOVE_TYPES = [
-        'PLACE',
-        'MOVE'
-    ];
 
     public const SIDE_TYPE_NORTH = 'NORTH';
     public const SIDE_TYPE_SOUTH = 'SOUTH';
@@ -21,9 +15,17 @@ interface RobotInterface
 
     public const SIDE_TYPES = [
         self::SIDE_TYPE_NORTH,
-        self::SIDE_TYPE_SOUTH,
         self::SIDE_TYPE_EAST,
+        self::SIDE_TYPE_SOUTH,
         self::SIDE_TYPE_WEST
+    ];
+
+    public const FACING_TYPE_LEFT = 'LEFT';
+    public const FACING_TYPE_RIGHT = 'RIGHT';
+
+    public const FACING_TYPES = [
+        self::FACING_TYPE_LEFT,
+        self::FACING_TYPE_RIGHT
     ];
 
     /**

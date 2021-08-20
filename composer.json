@@ -6,9 +6,9 @@
         "symfony/console": "^5.3",
         "nette/di": "^3.0",
         "markrogoyski/math-php": "^2.4",
-        "nette/finder": "^2.5",
         "nette/utils": "^3.2",
-        "ext-json": "*"
+        "ext-json": "*",
+        "phpstan/phpstan": "^0.12.95"
     },
     "require-dev": {
         "phpunit/phpunit": "7.1.3"

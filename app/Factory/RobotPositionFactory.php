@@ -11,10 +11,10 @@ class RobotPositionFactory
     /**
      * @param int $x
      * @param int $y
-     * @param string $facing
+     * @param $facing
      * @return RobotPosition
      */
-    public static function create(int $x, int $y, string $facing): RobotPosition
+    public static function create(int $x = null, int $y = null, $facing = ''): RobotPosition
     {
         return new RobotPosition($x, $y, $facing);
     }

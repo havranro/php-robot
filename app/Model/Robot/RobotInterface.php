@@ -29,8 +29,26 @@ interface RobotInterface
     ];
 
     /**
+     * Place robot on some table X,Y
+     *
      * @param RobotPosition $robotPosition
      * @return $this
      */
     public function place(RobotPosition $robotPosition): self;
+
+    /**
+     * Move with Robot in select pixel size
+     *
+     * @param int $moveSize
+     * @return $this
+     */
+    public function move(int $moveSize): self;
+
+    /**
+     * Changing facing or robot (LEFT,RIGHT)
+     *
+     * @param string $facing
+     * @return $this
+     */
+    public function changeFacing(string $facing): self;
 }

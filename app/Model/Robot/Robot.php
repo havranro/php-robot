@@ -87,6 +87,7 @@ class Robot implements RobotInterface
 
         $keySideFacing = array_search($lastPosition->getFacing()->getVector(), RobotPosition::SIDE_VECTORS, true);
 
+        // TOTO I'm sorry, but I didn't find a better solution and I didn't come up with a better one :(
         if ($facing === self::FACING_TYPE_RIGHT) {
             if (isset(RobotPosition::SIDE_VECTORS[$keySideFacing + 1])) {
                 $lastPosition->setFacing(new Vector(RobotPosition::SIDE_VECTORS[$keySideFacing + 1]));

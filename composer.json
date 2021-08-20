@@ -1,0 +1,21 @@
+{
+    "name": "romanhavranek/employees-dashboard",
+    "description": "task second",
+    "type": "project",
+    "require": {
+        "symfony/console": "^5.3",
+        "nette/di": "^3.0",
+        "markrogoyski/math-php": "^2.4",
+        "nette/finder": "^2.5",
+        "nette/utils": "^3.2",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "7.1.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Robot\\": "app/"
+        }
+    }
+}

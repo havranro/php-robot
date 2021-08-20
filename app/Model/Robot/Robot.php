@@ -59,16 +59,12 @@ class Robot implements RobotInterface
 
         if ($facing === self::SIDE_TYPE_NORTH) {
             $from->moveNorth($moveSize);
+        } elseif ($facing === self::SIDE_TYPE_WEST) {
+            $from->moveWest($moveSize);
+        } elseif ($facing === self::SIDE_TYPE_SOUTH) {
+            $from->moveSouth($moveSize);
         } else {
-            if ($facing === self::SIDE_TYPE_WEST) {
-                $from->moveWest($moveSize);
-            } else {
-                if ($facing === self::SIDE_TYPE_SOUTH) {
-                    $from->moveSouth($moveSize);
-                } else {
-                    $from->moveEast($moveSize);
-                }
-            }
+            $from->moveEast($moveSize);
         }
 
         if (!$this->table->isValidPosition($from)) {

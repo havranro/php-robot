@@ -4,7 +4,6 @@
     "type": "project",
     "require": {
         "symfony/console": "^5.3",
-        "nette/di": "^3.0",
         "markrogoyski/math-php": "^2.4",
         "nette/utils": "^3.2",
         "ext-json": "*"

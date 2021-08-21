@@ -31,9 +31,7 @@ class Robot implements RobotInterface
     }
 
     /**
-     * @param RobotPosition $position
-     * @return $this
-     * @throws Exception
+     * @inheritDoc
      */
     public function place(RobotPosition $position): self
     {
@@ -47,9 +45,7 @@ class Robot implements RobotInterface
     }
 
     /**
-     * @param int $moveSize
-     * @return $this
-     * @throws Exception
+     * @inheritDoc
      */
     public function move(int $moveSize): self
     {
@@ -67,7 +63,10 @@ class Robot implements RobotInterface
             $from->moveEast($moveSize);
         }
 
+        // check if position is valid
         if (!$this->table->isValidPosition($from)) {
+            $this->setActualPosition($this->getActualPosition());
+
             throw new Exception('Out of table range.');
         }
 
@@ -77,9 +76,7 @@ class Robot implements RobotInterface
     }
 
     /**
-     * @param string $facing
-     * @return $this
-     * @throws Exception
+     * @inheritDoc
      */
     public function changeFacing(string $facing): self
     {
@@ -107,6 +104,14 @@ class Robot implements RobotInterface
         $this->setActualPosition($lastPosition);
 
         return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function reset(): void
+    {
+        PositionRepository::remove();
     }
 
     /**

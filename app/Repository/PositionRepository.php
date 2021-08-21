@@ -51,4 +51,9 @@ class PositionRepository
             throw new Exception('Filesystem cant write to file');
         }
     }
+
+    public static function remove(): void
+    {
+        FileSystem::write(self::FILE_PATH_TO_PERSIST, '');
+    }
 }

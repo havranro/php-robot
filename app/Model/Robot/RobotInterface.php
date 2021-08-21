@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Robot\Model\Robot;
 
+use Exception;
+
 /**
  * Interface RobotInterface
  * @package Robot\Model\Robot
@@ -35,16 +37,18 @@ interface RobotInterface
     /**
      * Place robot on some table X,Y
      *
-     * @param RobotPosition $robotPosition
+     * @param RobotPosition $position
      * @return $this
+     * @throws Exception
      */
-    public function place(RobotPosition $robotPosition): self;
+    public function place(RobotPosition $position): self;
 
     /**
      * Move with Robot in select pixel size
      *
      * @param int $moveSize
      * @return $this
+     * @throws Exception
      */
     public function move(int $moveSize): self;
 
@@ -53,6 +57,12 @@ interface RobotInterface
      *
      * @param string $facing
      * @return $this
+     * @throws Exception
      */
     public function changeFacing(string $facing): self;
+
+    /**
+     * Method reset saved last position of robot
+     */
+    public function reset(): void;
 }

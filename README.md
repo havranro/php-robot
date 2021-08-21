@@ -16,7 +16,7 @@ docker-compose up -d
 ```
 Exec to the php container:
 ```sh
-docker exec -it php bash
+docker exec -it php sh
 ```
 
 Robot Control
